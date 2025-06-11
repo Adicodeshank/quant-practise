@@ -1,0 +1,26 @@
+RAII 
+
+============ MUTEX ===============
+A mutex (short for mutual exclusion) is a synchronization tool that prevents data races by allowing only one thread to access a resource (e.g., shared memory) at a time.
+
+Problem Without Mutex:
+In multi-threaded code, two threads may try to modify the same variable simultaneously — this causes a race condition, which leads to corrupt data, crashes, or worse, invisible logic errors.
+
+💡 Solution: std::mutex
+Only one thread can lock the mutex at a time.
+Others wait (block) until it’s released.
+
+------------- thread ----------------
+What is #include <thread>?
+It’s a C++ standard library that helps you run multiple tasks at the same time.
+
+It allows you to use threads. A thread is like a mini-program inside your program that can run on its own.
+
+You can use threads to do more than one thing at once, like downloading a file while showing a loading animation.
+
+❓========= What happens if you don’t use t.join();?========================================================
+The main program might end before the thread finishes.
+
+This can cause your thread to be killed early or lead to unexpected behavior.
+
+The program might even crash if the thread is still running when main() ends.
