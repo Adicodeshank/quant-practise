@@ -9,7 +9,7 @@ void increment ()
 {
     for(size_t i = 0; i < 100; i++)
     {
-        std::lock_guard<std::mutex> lock(mtx); // Lock happens here
+        std::lock_guard<std::<mutex> lock(mtx); // Lock happens here
         ++counter;
     }// auto lock unlock ho jaiga 
 }

@@ -63,6 +63,7 @@ Backtesting = running your strategy back in time to:
 class miniBacktest {
 private:
     std::vector<double>data;
+    bool intPosition = false; // means mere pass stocks ha ya nahi => false mtlb nahi ha 
 public:
     miniBacktest (size_t n) : data(n)
     {
@@ -115,25 +116,43 @@ public:
         return {mini,maxi};
     }
 
-    void buySell(std::vector<double>& data)
-    {
-        for(size_t i = 0; i < data.size(); i++)
+   // simulator
+   /*
+    🧱 Basic Terms You Need
+        Cash: Your starting capital (e.g., ₹1000)
+
+        Shares: How many stocks you own
+
+        Price: The price of the stock on each day
+
+        In Position: Are you currently holding a stock?
+   */
+
+   void simulator(std:: vector<double> & prices)
+   {
+        double cash = 1000.0;
+        double shares = 0;
+        for(double price : prices)
         {
-            if(data[i] > 100.9)
+            if(!intPosition && price>100.9 )
             {
-                std::cout << "Buy at" << data[i]<<"\n";
-                break;
+                std::cout << "BUY at " << price << "\n";
+                shares = cash/price;
+                cash = 0;
+                intPosition = true;
+            }
+            else if(intPosition && price < 100.0)
+            {
+                std::cout << "SELL at " << price << "\n";
+                cash = shares*price;
+                shares = 0;
+                intPosition = false;
             }
         }
-        for(size_t i = 0; i < data.size(); i++)
-        {
-            if(data[i] < 100)
-            {
-                std::cout << "sell at" << data[i]<<"\n";
-                break;
-            }
-        }
-    }
+
+        double finalValue = cash + (shares * data.back());
+        std::cout << "Final Portfolio Value: " << finalValue << "\n";  
+   }
 };
 
 int main()
@@ -155,5 +174,8 @@ int main()
     std::cout<< "mini " << minMax.first << " maxi ," << minMax.second;
     std::cout << "\n";
     
-    obj.buySell(data);
+    obj.simulator(data);
 }
+// reseach on project
+// one standard deviation
+//  
