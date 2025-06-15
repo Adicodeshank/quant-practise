@@ -5,7 +5,7 @@
 template <typename T>
 class priceSeries {
 private:
-     std::unique_ptr<std::vector<T>> prices;
+    std::unique_ptr<std::vector<T>> prices;
     size_t size;
 public:
     priceSeries(size_t n)
@@ -59,6 +59,9 @@ int main() {
     std::cout << "Avg: " << series.average() << "\n";
     std::cout << "Min: " << series.minCost() << "\n";
     std::cout << "Max: " << series.maxCost() << "\n";
-     // Auto memory cleanup when 'series' goes out of scope
+    // Auto memory cleanup when 'series' goes out of scope
 }
 
+// document the task 
+// reseach on project 
+// plan the day 
