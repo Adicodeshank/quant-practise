@@ -46,6 +46,6 @@ int main()
     }// data2 goes out of scope, but object is not deleted
     // data2 scope se bahar ho gya fir bhi deconstructer call nahi hua kykoi MarketData is shared with data1 also 
 
-      std::cout << "Use count: " << data1.use_count() << "\n"; // 1
+    std::cout << "Use count: " << data1.use_count() << "\n"; 
 }// here object will get deleted 
 

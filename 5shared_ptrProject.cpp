@@ -3,6 +3,8 @@
 #include <vector>
 
 class PriceFeed {
+private:
+    std::vector<double> prices;
 public:
     PriceFeed(std::vector<double> p) : prices(std::move(p)) {}
     void print() const {
@@ -10,8 +12,6 @@ public:
             std::cout << price << " ";
         std::cout << "\n";
     }
-private:
-    std::vector<double> prices;
 };
 
 class SignalGenerator {

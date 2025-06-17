@@ -19,7 +19,7 @@ int main()
 
     b = std::make_shared<int>(44);
     c = std::make_shared<int>(42);
-    // b c points to 44  c points to 42 d still points to 23
+    // b  points to 44  c points to 42 d still points to 23
 
     // *c = *b; // now c points to b
 
