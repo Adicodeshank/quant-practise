@@ -59,7 +59,7 @@ int main()
     Run the monitor() function before and after deleting the feed*/
 
     std::shared_ptr<PriceFeed> pf = std::make_shared<PriceFeed>(std::vector<double>{101.5, 102.0, 99.8});
-    RiskEngine engine(pf);
+    RiskEngine engine(pf); // pf is a shared pointer which converts to weak pointer internally then transfered to the RiskEngine as RiskEngine accessing a weak pointer because it only want to obseve it . 
 
     engine.moniter();  // Feed is alive
 
@@ -68,3 +68,12 @@ int main()
     engine.moniter();  // Feed is gone
     return 0;
 }
+/*
+ Memory Analysis & Optimization
+| Element            | Location                     | Notes                                 |
+| ------------------ | ---------------------------- | ------------------------------------- |
+| `PriceFeed` object | Heap                         | Allocated via `make_shared`           |
+| `shared_ptr`       | Stack + Control Block (heap) | Holds ownership & increases ref count |
+| `weak_ptr`         | Stack                        | Doesn't hold ownership                |
+| Control block      | Heap                         | Contains `use_count` + `weak_count`   |
+*/
