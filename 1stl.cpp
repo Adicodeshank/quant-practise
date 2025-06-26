@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include <numeric>
 int main()
 {
     std::vector<int> prices = {100, 102, 98};
@@ -98,6 +99,34 @@ int main()
 
         Binary search on sorted data (very fast, cache-friendly)
     */
+
+
+    /*
+    🧠 1. std::accumulate
+    🔍 What it does:
+    Adds up all elements in a range.
+    Also supports custom operations like product, average, or dot product.
+    */
+    std::vector<double> returns = {0.01, -0.005, 0.007};
+    double total_return = std::accumulate(returns.begin(), returns.end(), 0.0);
+    
+    /*🧠 2. std::partial_sum
+    🔍 What it does:
+    Computes the running sum of a sequence:*/
+
+
+    std::vector<double> returns2 = {0.01, -0.005, 0.007};
+    std::vector<double> cum_return(returns.size());
+
+    std::partial_sum(returns.begin(), returns.end(), cum_return.begin());
+
+    // 🧠 3. std::adjacent_difference
+        std::vector<double> prices3 = {100.0, 101.5, 99.0};
+    std::vector<double> deltas(prices.size());
+
+    std::adjacent_difference(prices3.begin(), prices3.end(), deltas.begin());
+    //  deltas = {100.0, 1.5, -2.5}   ← first element is copy of prices[0]
+
     
 
 
