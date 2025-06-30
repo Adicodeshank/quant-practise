@@ -1,4 +1,4 @@
-///////////// time series price store 
+///////////////////// time series price store ////////////////////////
 #include <map>
 #include <iostream>
 int main()
