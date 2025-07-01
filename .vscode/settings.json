@@ -47,6 +47,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "map": "cpp",
-    "optional": "cpp"
+    "optional": "cpp",
+    "set": "cpp",
+    "iomanip": "cpp"
   }
 }
