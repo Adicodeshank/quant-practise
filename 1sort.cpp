@@ -22,7 +22,5 @@ int main()
 
     std::sort(signals.begin(), signals.end(), [](const Signal& a, const Signal& b){
         return (a.score > b.score);
-    });
-
-    
+    });  
 }
