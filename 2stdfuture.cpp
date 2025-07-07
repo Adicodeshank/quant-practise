@@ -9,7 +9,7 @@ int compute_pnl() {
 }
 
 int main() {
-    std::future<int> fut = std::async(std::launch::async, compute_pnl);
+    std::future<int> fut = std::async(std::launch::async , compute_pnl);
 
     std::cout << "Doing other work in main thread...\n";
 
